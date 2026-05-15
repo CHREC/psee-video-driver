@@ -34,6 +34,133 @@
 #define BYTES_PER_LINE (1lu << 20)
 #define SIZE_IMAGE BYTES_PER_LINE
 
+// Register map
+// SYSTEM CONFIG
+#define SYSTEM_ID 0x00000800
+#define BITSTREAM_VERSION 0x00000804
+#define BUILD_DATE 0x00000808
+#define VERSION_CONTROL_ID 0x0000080C
+
+// SYSTEM CONTROL
+#define GLOBAL_CONTROL 0x00000000
+#define CLK_CONTROL 0x00000004
+#define TIME_BASE_CONTROL 0x00000008
+#define TIME_BASE_RESOLUTION 0x0000000C
+#define IMU_CONTROL 0x00000010
+#define EVT_DATA_FORMATTER_CONTROL 0x00000014
+#define EVT_MERGE_CONTROL 0x00000018
+#define TH_RECOVERY_CONTROL 0x00000044
+#define TS_CHECKER_CONTROL 0x00000048
+#define TS_CHECKER_EVT_UI_CNT 0x0000004C
+#define TS_CHECKER_EVT_BROKEN_CNT 0x00000050
+#define TS_CHECKER_EVT_UK_ERR_CNT 0x00000054
+#define BOARD_CONTROL_STATUS 0x00000058
+#define IO_CONTROL 0x0000005C
+#define OUT_TH_RECOVERY_CONTROL 0x00000060
+#define OUT_TS_CHECKER_CONTROL 0x00000064
+#define OUT_TS_CHECKER_EVT_UI_CNT 0x00000068
+#define OUT_TS_CHECKER_EVT_BROKEN_CNT 0x0000006C
+#define OUT_TS_CHECKER_EVT_UK_ERR_CNT 0x00000070
+#define IP_SL_MXTA_MONITOR_CONTROL 0x00000074
+
+// HUAHINE IF CTRL
+#define IF_CONTROL 0x0070F000
+#define IF_TRIGGER 0x0070F004
+#define IF_TEST_PATTERN_CONTROL 0x0070F008
+#define IF_TEST_PATTERN_N_PERIOD 0x0070F00C
+#define IF_TEST_PATTERN_P_PERIOD 0x0070F010
+#define IF_TEST_PATTERN_VECTOR 0x0070F014
+#define IF_OOB_FILTER_CONTROL 0x0070F018
+#define IF_OOB_FILTER_ORIGIN 0x0070F01C
+#define IF_OOB_FILTER_SIZE 0x0070F020
+#define IF_CCAM5_CONTROL 0x0070F024
+#define IF_TRIGGER_FWD 0x0070F028
+#define IF_MIPI_RX_CONTROL 0x0070F02C
+#define IF_HUAHINE_CTRL 0x0070F030
+#define IF_HAHINE_POWER_CTRL 0x0070F034
+#define IF_HUAHINE_CLK_CTRL 0x0070F038
+
+// MIPI RX IP
+#define MIPI_CORE_CONFIG 0X00700000
+
+// AUX IF 
+// IGNORING
+
+// VERIFICATION IP (VIP)
+#define VIP_CONTROL 0x00710100
+#define VIP_TEST_STATUS 0x00710104
+#define VIP_PATTERN_TEST_DATA 0x00710108
+#define VIP_TEST_RESULT 0x0071010C
+#define VIP_VALID_COUNTER 0x00710110
+#define VIP_ERROR_COUNTER 0x00710114
+#define VIP_ERROR_INDEX 0x00710118
+
+// SYSTEM MONITOR
+// IGNORING MOST
+#define MONITOR_CONTROL_EVT_MERGE_CONTROL 0x00000600
+
+// PS HOST IF
+#define PS_AXI_DMA_PACKETIZER_CONTROL 0x00002000
+#define PS_AXI_DMA_PACKETIZER_PACKET_LENGTH 0x00002004
+#define PS_AXIL_BRIDGE_CONTROL 0x00002100
+#define PS_AXIL_BRIDGE_ERROR_STATUS 0x00002104
+
+// IMX636 MIPI
+#define IMX636_MIPI_BASE 		  0x00100000
+#define IMX636_GLOBAL_CTRL        (IMX636_MIPI_BASE + 0x00000000)
+#define IMX636_ROI_CTRL           (IMX636_MIPI_BASE + 0x00000004)
+#define IMX636_CHIP_ID            (IMX636_MIPI_BASE + 0x00000014)
+#define IMX636_SPARE_CTRL_0       (IMX636_MIPI_BASE + 0x00000018)
+#define IMX636_DIVISOR_CTRL       (IMX636_MIPI_BASE + 0x000000B8)
+#define IMX636_GLOBAL_CTRL_2      (IMX636_MIPI_BASE + 0x000000C0)
+#define IMX636_EDF_PIPE_CTRL      (IMX636_MIPI_BASE + 0x00007000)
+#define IMX636_EOI_PIPE_CTRL      (IMX636_MIPI_BASE + 0x00008000)
+#define IMX636_RO_CTRL            (IMX636_MIPI_BASE + 0x00009000)
+#define IMX636_RO_TIME_BASE_CTRL  (IMX636_MIPI_BASE + 0x00009008)
+#define IMX636_RO_LOOP_CTRL       (IMX636_MIPI_BASE + 0x00009028)
+#define IMX636_MIPI_CTRL          (IMX636_MIPI_BASE + 0x0000B000)
+#define IMX636_MIPI_ESC_CTRL      (IMX636_MIPI_BASE + 0x0000B004)
+#define IMX636_MIPI_POWER         (IMX636_MIPI_BASE + 0x0000B040)
+#define IMX636_MIPI_STREAM        (IMX636_MIPI_BASE + 0x0000B044)
+#define IMX636_MIPI_PL_RG_1       (IMX636_MIPI_BASE + 0x0000B064)
+#define IMX636_MIPI_PL_RG_2       (IMX636_MIPI_BASE + 0x0000B068)
+#define IMX636_MIPI_PL_RG_5       (IMX636_MIPI_BASE + 0x0000B074)
+#define IMX636_MIPI_PL_RG_6       (IMX636_MIPI_BASE + 0x0000B078)
+#define IMX636_MIPI_PL_RG_7       (IMX636_MIPI_BASE + 0x0000B07C)
+#define IMX636_MIPI_TCLKPOST      (IMX636_MIPI_BASE + 0x0000B080)
+#define IMX636_MIPI_TCLKPRE       (IMX636_MIPI_BASE + 0x0000B084)
+#define IMX636_MIPI_TCLKPREPARE   (IMX636_MIPI_BASE + 0x0000B088)
+#define IMX636_MIPI_TCLKTRAIL     (IMX636_MIPI_BASE + 0x0000B08C)
+#define IMX636_MIPI_TCLKZERO      (IMX636_MIPI_BASE + 0x0000B090)
+#define IMX636_MIPI_THSEXIT       (IMX636_MIPI_BASE + 0x0000B094)
+#define IMX636_MIPI_THSPREPARE    (IMX636_MIPI_BASE + 0x0000B098)
+#define IMX636_MIPI_THSZERO       (IMX636_MIPI_BASE + 0x0000B09C)
+#define IMX636_MIPI_THSTRAIL      (IMX636_MIPI_BASE + 0x0000B0A0)
+#define IMX636_MIPI_TLPX          (IMX636_MIPI_BASE + 0x0000B0A4)
+#define IMX636_MIPI_TXCLKESC_FREQ (IMX636_MIPI_BASE + 0x0000B0AC)
+#define IMX636_MIPI_DPHY_POWER    (IMX636_MIPI_BASE + 0x0000B0C8)
+#define IMX636_MIPI_DPHY_PLL_DIV  (IMX636_MIPI_BASE + 0x0000B0CC)
+#define IMX636_MIPI_BYTECLK_CTRL  (IMX636_MIPI_BASE + 0x0000B120)
+#define IMX636_SLVS_LINKCLK_CTRL  (IMX636_MIPI_BASE + 0x0000E120)
+#define IMX636_MBX_MISC           (IMX636_MIPI_BASE + 0x00400010)
+
+// MIPI Timings - 600 Mbps
+#define PLL_FB_DIV_D_600   120
+#define DVTOP_DIV_D_600   0x08
+#define SYS_CLK_DIV_D_600    2
+#define TCLKPOST_600       103
+#define TCLKPRE_600         15
+#define TCLKPREPARE_600     39
+#define TCLKTRAIL_600       39
+#define TCLKZERO_600       183
+#define THSEXIT_600         71
+#define THSPREPARE_600      47
+#define THSZERO_600         79
+#define THSTRAIL_600        47
+#define TLPX_600            39
+#define TXCLKESC_FREQ_600   40
+#define DPHY_CLK_DIV_600     1
+
 static int video_nr = -1;
 module_param(video_nr, uint, 0644);
 MODULE_PARM_DESC(video_nr, "videoX start number, -1 is autodetect");
@@ -174,140 +301,136 @@ static int psee_video_initialize_device(struct file *file)
 		},
 	};
 
-	write_reg(pdata, 0x00200070, 0x0040002E);
-	write_reg(pdata, 0x0020006C, 0x0EE47114);
-	write_reg(pdata, 0x0020A00C, 0x00000454);
-	write_reg(pdata, 0x0020A010, 0x00008068);
-	write_reg(pdata, 0x00201104, 0x00000000);
-	write_reg(pdata, 0x0020A020, 0x00000070);
-	write_reg(pdata, 0x0020A004, 0x00000100);
-	write_reg(pdata, 0x0020A008, 0x00002404);
-	write_reg(pdata, 0x0020A000, 0x00000100);
-	write_reg(pdata, 0x0020B044, 0x00000000);
-	write_reg(pdata, 0x0020B004, 0x0000000A);
-	write_reg(pdata, 0x0020B040, 0x00000000);
-	write_reg(pdata, 0x0020B0C8, 0x00000000);
-	write_reg(pdata, 0x0020B040, 0x00000000);
-	write_reg(pdata, 0x0020B040, 0x00000000);
-	write_reg(pdata, 0x00200000, 0x0F006402);
-	write_reg(pdata, 0x00200000, 0x0F006402);
-	write_reg(pdata, 0x0020B07C, 0x00000000);
-	write_reg(pdata, 0x0010F024, 0x00000000);
-	write_reg(pdata, 0x0010F024, 0x00000000);
-	write_reg(pdata, 0x00000004, 0x00000666);
-	write_reg(pdata, 0x00000004, 0x00010000);
-	write_reg(pdata, 0x00000004, 0x00000000);
-	write_reg(pdata, 0x00000004, 0x00000666);
-	write_reg(pdata, 0x00000004, 0x00010000);
-	write_reg(pdata, 0x00000004, 0x00000111);
-	write_reg(pdata, 0x0010F030, 0x00000000);
-	write_reg(pdata, 0x0010F030, 0x00000000);
-	write_reg(pdata, 0x0010F024, 0x00000000);
-	write_reg(pdata, 0x0010F024, 0x00000001);
-	msleep_interruptible(500);
-	write_reg(pdata, 0x0010F024, 0x00000003);
-	msleep_interruptible(500);
-	write_reg(pdata, 0x0010F030, 0x00000200);
-	write_reg(pdata, 0x00000000, 0x0000000C);
-	write_reg(pdata, 0x00000000, 0x0000000C);
-	write_reg(pdata, 0x00000000, 0x0000000D);
-	write_reg(pdata, 0x00002004, 0x00080000);
-	write_reg(pdata, 0x00100000, 0x00000001);
-	write_reg(pdata, 0x0010F000, 0x00400000);
-	write_reg(pdata, 0x0010F000, 0x00400000);
-	write_reg(pdata, 0x00200064, 0x00000001);
-	write_reg(pdata, 0x0020B074, 0x00000002);
-	write_reg(pdata, 0x0020B078, 0x00000078);
-	write_reg(pdata, 0x00200000, 0x0C006402);
-	write_reg(pdata, 0x00200000, 0x0C001402);
-	write_reg(pdata, 0x00200000, 0x0C001442);
-	write_reg(pdata, 0x0020B068, 0x00000004);
-	write_reg(pdata, 0x0020B07C, 0x00000003);
-	write_reg(pdata, 0x00200000, 0x4C001442);
-	write_reg(pdata, 0x00200000, 0x4C00144A);
-	write_reg(pdata, 0x00200000, 0x4C00140A);
-	write_reg(pdata, 0x00200000, 0x4C00640A);
-	write_reg(pdata, 0x00200000, 0x4C00644A);
-	write_reg(pdata, 0x0020B080, 0x00000067);
-	write_reg(pdata, 0x0020B084, 0x0000000F);
-	write_reg(pdata, 0x0020B088, 0x00000027);
-	write_reg(pdata, 0x0020B08C, 0x00000027);
-	write_reg(pdata, 0x0020B090, 0x000000B7);
-	write_reg(pdata, 0x0020B094, 0x00000047);
-	write_reg(pdata, 0x0020B098, 0x0000002F);
-	write_reg(pdata, 0x0020B09C, 0x0000004F);
-	write_reg(pdata, 0x0020B0A0, 0x0000002F);
-	write_reg(pdata, 0x0020B0A4, 0x00000027);
-	write_reg(pdata, 0x0020B0AC, 0x00000028);
-	write_reg(pdata, 0x0020B0CC, 0x00000001);
-	write_reg(pdata, 0x0020B000, 0x00000158);
-	write_reg(pdata, 0x0020B004, 0x0000008A);
-	write_reg(pdata, 0x0020B01C, 0x00000030);
-	write_reg(pdata, 0x0020B020, 0x00004000);
-	write_reg(pdata, 0x0020B040, 0x00000007);
-	write_reg(pdata, 0x0020A000, 0x00000101);
-	write_reg(pdata, 0x0020A008, 0x00002405);
-	write_reg(pdata, 0x0020A004, 0x00000101);
-	write_reg(pdata, 0x0020A020, 0x00000170);
-	write_reg(pdata, 0x0020B040, 0x0000000F);
-	write_reg(pdata, 0x0020B004, 0x0000008A);
-	write_reg(pdata, 0x0020B0C8, 0x00000003);
-	write_reg(pdata, 0x0020B044, 0x00000003);
-	write_reg(pdata, 0x0020B000, 0x00000159);
-	write_reg(pdata, 0x00209008, 0x00000640);
-	write_reg(pdata, 0x00208000, 0x0001E005);
-	write_reg(pdata, 0x00207008, 0x00000001);
-	write_reg(pdata, 0x00207000, 0x00070001);
-	write_reg(pdata, 0x00206000, 0x00155403);
-	write_reg(pdata, 0x0020D000, 0x00000005);
-	write_reg(pdata, 0x0020C000, 0x00000005);
-	write_reg(pdata, 0x00209000, 0x00000208);
-	write_reg(pdata, 0x00207008, 0x00000001);
-	write_reg(pdata, 0x00207000, 0x00070001);
-	write_reg(pdata, 0x00208000, 0x0001E085);
-	write_reg(pdata, 0x00209008, 0x00000644);
-	write_reg(pdata, 0x00200004, 0xF0005442);
-	write_reg(pdata, 0x00200004, 0xF0005042);
-	write_reg(pdata, 0x0020002C, 0x00200224);
-	write_reg(pdata, 0x0020A000, 0x00000101);
-	write_reg(pdata, 0x0020A000, 0x000000A1);
-	write_reg(pdata, 0x0020A008, 0x00002405);
-	write_reg(pdata, 0x0020A004, 0x00000101);
-	write_reg(pdata, 0x0020A004, 0x000000A1);
-	write_reg(pdata, 0x0020A020, 0x00000170);
-	write_reg(pdata, 0x0020A020, 0x00000160);
-	write_reg(pdata, 0x0020A008, 0x00082401);
-	write_reg(pdata, 0x0020004C, 0x00007141);
-	write_reg(pdata, 0x00200054, 0x00000210);
-	write_reg(pdata, 0x00200008, 0x60000000);
-	write_reg(pdata, 0x00201104, 0x00000001);
-	write_reg(pdata, 0x0020A010, 0x0000A06B);
-	write_reg(pdata, 0x00201100, 0x00000004);
-	write_reg(pdata, 0x0020A010, 0x0180A063);
-	write_reg(pdata, 0x0020A00C, 0x00000404);
-	write_reg(pdata, 0x0020A00C, 0x00000405);
-	write_reg(pdata, 0x0020A00C, 0x00000401);
-	write_reg(pdata, 0x00200070, 0x00400000);
-	write_reg(pdata, 0x0020006C, 0x0EE47117);
-	write_reg(pdata, 0x0020006C, 0x0EE4711F);
-	write_reg(pdata, 0x00200070, 0x00480000);
-	write_reg(pdata, 0x00201044, 0x01A98A7C);
-	write_reg(pdata, 0x00201040, 0x01A98A94);
-	write_reg(pdata, 0x00201048, 0x01A98B94);
-	write_reg(pdata, 0x0020101C, 0x01A1575B);
-	write_reg(pdata, 0x00201050, 0x01A1B251);
-	write_reg(pdata, 0x00201020, 0x01A9CD44);
-	write_reg(pdata, 0x0020100C, 0x01A1FF00);
-	write_reg(pdata, 0x00201018, 0x01A13734);
-	write_reg(pdata, 0x00201010, 0x01A16373);
-	write_reg(pdata, 0x00201014, 0x01A15050);
-	write_reg(pdata, 0x00201004, 0x01A1E84A);
-	write_reg(pdata, 0x00201008, 0x01210000);
-	write_reg(pdata, 0x00201000, 0x01A1C469);
-	write_reg(pdata, 0x0020104C, 0x01A19278);
-	write_reg(pdata, 0x00201100, 0x00000005);
-	write_reg(pdata, 0x0020002C, 0x0022C724);
-	write_reg(pdata, 0x00200018, 0x00000200);
+	/* Just apply evk2_imx636_cd sequence */
+	write_reg(pdata, CLK_CONTROL, 0x00000111); // CLK_CONTROL
+	write_reg(pdata, GLOBAL_CONTROL, 0x00000089); // GLOBAL_CONTROL
+	write_reg(pdata, GLOBAL_CONTROL, 0x0000008D); // GLOBAL_CONTROL
+	write_reg(pdata, GLOBAL_CONTROL, 0x000000CD); // GLOBAL_CONTROL
+	write_reg(pdata, TIME_BASE_CONTROL, 0x0000004E); // TIME_BASE_CONTROL
+	write_reg(pdata, PS_AXI_DMA_PACKETIZER_PACKET_LENGTH, 0x00080000); // AXI_DMA_PACKETIZER/PACKET_LENGTH
+	write_reg(pdata, EVT_DATA_FORMATTER_CONTROL, 0x00000000); // EVT_DATA_FORMATTER_CONTROL
+	write_reg(pdata, MONITOR_CONTROL_EVT_MERGE_CONTROL, 0x00000003); // CONTROL/EVT_MERGE_CONTROL
+	write_reg(pdata, TH_RECOVERY_CONTROL, 0x00000000); // 
+	write_reg(pdata, TS_CHECKER_CONTROL, 0x00030D41);
+	write_reg(pdata, EVT_MERGE_CONTROL, 0x00000000);
+	write_reg(pdata, MIPI_CORE_CONFIG, 0x00000001);
+	write_reg(pdata, IF_CONTROL, 0x00400000);
+	write_reg(pdata, IF_CONTROL, 0x00400000);
+	write_reg(pdata, IF_CONTROL, 0x00400000);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000000);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000000);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000000);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000000);
+	write_reg(pdata, IF_CONTROL, 0x00400000);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000001);
+	write_reg(pdata, IF_HUAHINE_CLK_CTRL, 0x01405002); // CHECK: Changes Sensor clock control, sets amount of timei n VCO cycles that clock output remains High and Low
+	write_reg(pdata, IF_HUAHINE_CLK_CTRL, 0x01405000);
+	/*
+		Might need to call mcu to enable CCAM5 
+	*/
+	// write_reg(pdata, IF_CCAM5_CONTROL, 0x00000000);
+	// write_reg(pdata, IF_CCAM5_CONTROL, 0x00000001);
+	// msleep_interruptible(500);
+	// write_reg(pdata, IF_CCAM5_CONTROL, 0x00000003); // pulls it out of reset
+	// msleep_interruptible(500);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000001);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000001);
+	write_reg(pdata, IF_HUAHINE_CLK_CTRL, 0x01405001);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000101);
+	write_reg(pdata, IF_HUAHINE_CTRL, 0x00000301);
+
+	// Disable MIPI CSI-2
+	write_reg(pdata, IMX636_MIPI_CTRL, 0x00000158);
+	// Power down CSI-2 and D-PHY
+	write_reg(pdata, IMX636_MIPI_STREAM, 0x00000000);
+	write_reg(pdata, IMX636_MIPI_ESC_CTRL, 0x0000000A);
+	write_reg(pdata, IMX636_MIPI_POWER, 0x00000000);
+	write_reg(pdata, IMX636_MIPI_DPHY_POWER, 0x00000000);
+	write_reg(pdata, IMX636_MIPI_POWER, 0x00000000);
+	write_reg(pdata, IMX636_MIPI_POWER, 0x00000000);
+
+	// Power down PLL
+	write_reg(pdata, IMX636_GLOBAL_CTRL, 0x4F006442);
+	write_reg(pdata, IMX636_GLOBAL_CTRL, 0x0F006442);
+	write_reg(pdata, IMX636_DIVISOR_CTRL, 0x00000400);
+	write_reg(pdata, IMX636_DIVISOR_CTRL, 0x00000400);
+	write_reg(pdata, IMX636_MIPI_PL_RG_7, 0x00000000);
+
+	// Reconfigure the PLL
+	write_reg(pdata, IMX636_MIPI_PL_RG_5, 0x00000002);
+	write_reg(pdata, IMX636_MIPI_PL_RG_6, PLL_FB_DIV_D_600);
+	write_reg(pdata, IMX636_GLOBAL_CTRL_2, 0x00000108); // These two same as Chris's code
+	write_reg(pdata, IMX636_GLOBAL_CTRL_2, 0x00000208); // Seems to like setting one bit at a time
+
+	// Power up PLL
+	write_reg(pdata, IMX636_MIPI_BYTECLK_CTRL, 0x00000001);
+	write_reg(pdata, IMX636_SLVS_LINKCLK_CTRL, 0x00000000);
+	write_reg(pdata, IMX636_MIPI_PL_RG_2, 0x00000004);
+	write_reg(pdata, IMX636_MIPI_PL_RG_7, 0x00000001);
+	write_reg(pdata, IMX636_MIPI_PL_RG_7, 0x00000003);
+
+	// Some setups
+	write_reg(pdata, IMX636_DIVISOR_CTRL, 0x00000401);
+	write_reg(pdata, IMX636_DIVISOR_CTRL, 0x00000409);
+	write_reg(pdata, IMX636_GLOBAL_CTRL, 0x4F006442);
+	write_reg(pdata, IMX636_GLOBAL_CTRL, 0x4F00644A);
+
+	// Update D-PHY timings for new clocking
+	write_reg(pdata, IMX636_MIPI_TCLKPOST, TCLKPOST_600);
+	write_reg(pdata, IMX636_MIPI_TCLKPRE, TCLKPRE_600);
+	write_reg(pdata, IMX636_MIPI_TCLKPREPARE, TCLKPREPARE_600);
+	write_reg(pdata, IMX636_MIPI_TCLKTRAIL, TCLKTRAIL_600);
+	write_reg(pdata, IMX636_MIPI_TCLKZERO, TCLKZERO_600);
+	write_reg(pdata, IMX636_MIPI_THSEXIT, THSEXIT_600);
+	write_reg(pdata, IMX636_MIPI_THSPREPARE, THSPREPARE_600);
+	write_reg(pdata, IMX636_MIPI_THSZERO, THSZERO_600);
+	write_reg(pdata, IMX636_MIPI_THSTRAIL, THSTRAIL_600);
+	write_reg(pdata, IMX636_MIPI_TLPX, TLPX_600);
+	write_reg(pdata, IMX636_MIPI_TXCLKESC_FREQ, TXCLKESC_FREQ_600);
+	write_reg(pdata, IMX636_MIPI_DPHY_PLL_DIV, DPHY_CLK_DIV_600);
+
+	// Think this is analog stuff
+	write_reg(pdata, 0x0010A000, 0x000B0501);
+	write_reg(pdata, 0x0010A008, 0x00002405);
+	write_reg(pdata, 0x0010A004, 0x000B0501);
+	write_reg(pdata, 0x0010A020, 0x00000150);
+
+	// Power up D-PHY
+	write_reg(pdata, IMX636_MIPI_POWER, 0x00000007);
+	write_reg(pdata, IMX636_MIPI_PL_RG_1, 0x00000006);
+	write_reg(pdata, IMX636_MIPI_POWER, 0x0000000F);
+	write_reg(pdata, IMX636_MIPI_ESC_CTRL, 0x0000008A);
+	write_reg(pdata, IMX636_MIPI_DPHY_POWER, 0x00000003);
+
+	// Re-enable stream and control
+	write_reg(pdata, IMX636_MIPI_STREAM, 0x00000001);
+	write_reg(pdata, IMX636_MIPI_CTRL, 0x00000159);
+
+	// who knows
+	write_reg(pdata, 0x00107008, 0x00000001);
+
+	// Apply EVT 3.0 Format
+	write_reg(pdata, IMX636_EDF_PIPE_CTRL, 0x00070001);
+	write_reg(pdata, IMX636_EOI_PIPE_CTRL, 0x0001E085);
+
+	// Disable timebase
+	write_reg(pdata, IMX636_RO_TIME_BASE_CTRL, 0x0000064A);
+
+	// who knows
+	write_reg(pdata, 0x00100044, 0xCCFFCCCF);
+
+	// Pixel reset
+	write_reg(pdata, IMX636_ROI_CTRL, 0xF0005042);
+
+	// Set Pixel monitor reference current control to Pmos leak
+	write_reg(pdata, IMX636_SPARE_CTRL_0, 0x00000200);
+
+	// who knows
+	write_reg(pdata, 0x00101014, 0x11A1504D);
+	write_reg(pdata, 0x00109004, 0x00000000);
+
+	// Disable RO pattern
+	write_reg(pdata, IMX636_RO_CTRL, 0x00000200);
 
 	/*
 	 * Try to configure with default parameters. Notice: this is the
@@ -368,29 +491,36 @@ static int psee_video_release(struct file *file)
 	 * Then de-initialize hw module.
 	 */
 	if (fh_singular) {
-		write_reg(pdata, 0x00200070, 0x00400000);
-		write_reg(pdata, 0x0020006C, 0x0EE47114);
-		write_reg(pdata, 0x0020A00C, 0x00000400);
-		write_reg(pdata, 0x0020A010, 0x00008068);
-		write_reg(pdata, 0x00201104, 0x00000000);
-		write_reg(pdata, 0x0020A020, 0x00000060);
-		write_reg(pdata, 0x0020A004, 0x000002A0);
-		write_reg(pdata, 0x0020A008, 0x00002400);
-		write_reg(pdata, 0x0020A000, 0x000002A0);
-		write_reg(pdata, 0x0020B044, 0x00000002);
-		write_reg(pdata, 0x0020B004, 0x0000000A);
-		write_reg(pdata, 0x0020B040, 0x0000000E);
-		write_reg(pdata, 0x0020B0C8, 0x00000000);
-		write_reg(pdata, 0x0020B040, 0x00000006);
-		write_reg(pdata, 0x0020B040, 0x00000004);
-		write_reg(pdata, 0x00200000, 0x4C006442);
-		write_reg(pdata, 0x00200000, 0x0C006442);
-		write_reg(pdata, 0x0020B07C, 0x00000000);
-		write_reg(pdata, 0x0010F024, 0x00000001);
-		write_reg(pdata, 0x0010F024, 0x00000000);
-		write_reg(pdata, 0x00000004, 0x00000777);
-		write_reg(pdata, 0x00000004, 0x00010111);
-		write_reg(pdata, 0x00000004, 0x00000000);
+		// Analog DESTROY
+		write_reg(pdata, 0x00100070, 0x00400008);
+		write_reg(pdata, 0x0010006C, 0x0EE47114);
+		write_reg(pdata, 0x0010A00C, 0x00020400);
+		write_reg(pdata, 0x0010A010, 0x00008068);
+		write_reg(pdata, 0x00101104, 0x00000000);
+		write_reg(pdata, 0x0010A020, 0x00000050);
+		write_reg(pdata, 0x0010A004, 0x000B0500);
+		write_reg(pdata, 0x0010A008, 0x00002404);
+		write_reg(pdata, 0x0010A000, 0x000B0500);
+		// Digital DESTROY
+		write_reg(pdata, IMX636_MIPI_STREAM, 0x00000000);
+		write_reg(pdata, IMX636_MIPI_ESC_CTRL, 0x0000000A);
+		write_reg(pdata, IMX636_MIPI_POWER, 0x0000000E);
+		write_reg(pdata, IMX636_MIPI_DPHY_POWER, 0x00000000);
+		write_reg(pdata, IMX636_MIPI_POWER, 0x00000006);
+		write_reg(pdata, IMX636_MIPI_POWER, 0x00000004);
+		write_reg(pdata, IMX636_GLOBAL_CTRL, 0x4F006442);
+		write_reg(pdata, IMX636_GLOBAL_CTRL, 0x0F006442);
+		write_reg(pdata, IMX636_DIVISOR_CTRL, 0x00000401);
+		write_reg(pdata, IMX636_DIVISOR_CTRL, 0x00000400);
+		write_reg(pdata, IMX636_MIPI_PL_RG_7, 0x00000000);
+		write_reg(pdata, IF_HUAHINE_CTRL, 0x00000201);
+		write_reg(pdata, IF_HUAHINE_CTRL, 0x00000001);
+		write_reg(pdata, IF_HUAHINE_CLK_CTRL, 0x01405000);
+		write_reg(pdata, IF_CCAM5_CONTROL, 0x00000001);
+		write_reg(pdata, IF_CCAM5_CONTROL, 0x00000000);
+		write_reg(pdata, CLK_CONTROL, 0x00000777);
+		write_reg(pdata, CLK_CONTROL, 0x00010111);
+		write_reg(pdata, CLK_CONTROL, 0x00000000);
 	}
 
 	mutex_unlock(&pdata->lock);
@@ -448,6 +578,55 @@ static int psee_s_input(struct file *file, void *priv, unsigned int i)
 	return 0;
 }
 
+#ifdef CONFIG_VIDEO_ADV_DEBUG
+static int psee_g_chip_info(struct file *file, void *priv,
+			      struct v4l2_dbg_chip_info *chip)
+{
+	struct psee_video *pdata = video_drvdata(file);
+
+	if ((chip->match.type != V4L2_CHIP_MATCH_BRIDGE) &&
+		(chip->match.type != V4L2_CHIP_MATCH_SUBDEV))
+		return -EINVAL;
+
+	if (chip->match.addr != 0)
+		return -EINVAL;
+
+	strscpy(chip->name, pdata->v4l2_dev.name, sizeof(chip->name));
+	return 0;
+}
+
+static int psee_g_register(struct file *file, void *fh, struct v4l2_dbg_register *reg)
+{
+	struct psee_video *pdata = video_drvdata(file);
+
+	if ((reg->match.type != V4L2_CHIP_MATCH_BRIDGE) &&
+		(reg->match.type != V4L2_CHIP_MATCH_SUBDEV))
+		return -EINVAL;
+
+	if (reg->match.addr != 0)
+		return -EINVAL;
+
+	reg->val = read_reg(pdata, reg->reg & 0xfffffc);
+	reg->size = 4;
+	return 0;
+}
+
+static int psee_s_register(struct file *file, void *fh, const struct v4l2_dbg_register *reg)
+{
+	struct psee_video *pdata = video_drvdata(file);
+
+	if ((reg->match.type != V4L2_CHIP_MATCH_BRIDGE) &&
+		(reg->match.type != V4L2_CHIP_MATCH_SUBDEV))
+		return -EINVAL;
+
+	if (reg->match.addr != 0)
+		return -EINVAL;
+
+	write_reg(pdata, reg->reg & 0xfffffc, reg->val);
+	return 0;
+}
+#endif
+
 static const struct v4l2_ioctl_ops psee_video_ioctl_ops = {
 	.vidioc_querycap		= psee_querycap,
 	.vidioc_try_fmt_vid_cap		= psee_try_fmt_vid_cap,
@@ -468,6 +647,12 @@ static const struct v4l2_ioctl_ops psee_video_ioctl_ops = {
 	.vidioc_prepare_buf		= vb2_ioctl_prepare_buf,
 	.vidioc_streamon		= vb2_ioctl_streamon,
 	.vidioc_streamoff		= vb2_ioctl_streamoff,
+
+#ifdef CONFIG_VIDEO_ADV_DEBUG
+	.vidioc_g_chip_info		= psee_g_chip_info,
+	.vidioc_g_register		= psee_g_register,
+	.vidioc_s_register		= psee_s_register,
+#endif
 };
 
 /*
@@ -538,7 +723,7 @@ static void dma_callback(void *param)
 	case DMA_ERROR:
 		dev_err(pdata->mdev.dev, "%s: Received DMA_ERROR\n", __func__);
 		/* Return buffer to V4L2 in error state */
-		/* no break */
+		fallthrough;
 	case DMA_COMPLETE:
 		dev_dbg(pdata->mdev.dev, "%s: Received DMA_COMPLETE\n", __func__);
 
@@ -629,15 +814,34 @@ static int start_streaming(struct vb2_queue *vq, unsigned int count)
 {
 	struct psee_video *pdata = vb2_get_drv_priv(vq);
 	int ret = 0;
+	u32 val;
 
 	pdata->sequence = 0;
 
-	write_reg(pdata, 0x0010F000, 0x00400001);
-	write_reg(pdata, 0x0020B000, 0x00000159);
-	write_reg(pdata, 0x00209028, 0x00000000);
-	write_reg(pdata, 0x00209008, 0x00000645);
-	write_reg(pdata, 0x0020002C, 0x0022C724);
-	write_reg(pdata, 0x00200004, 0xF0005442);
+	// Enable and bypass TH Recovery block
+	write_reg(pdata, TH_RECOVERY_CONTROL, 0x00000003);
+	// Enable event data formatter
+	write_reg(pdata, EVT_DATA_FORMATTER_CONTROL, 0x00000001);
+	// Enable Moorea data handler and sets GEN_LAST
+	write_reg(pdata, IF_CONTROL, 0x00400001);
+	// Enable CSI on IMX636
+	write_reg(pdata, IMX636_MIPI_CTRL, 0x00000159);
+	// not sure
+	write_reg(pdata, 0x00109028, 0x00000000);
+	// Enable RO time base, mode = external, us counter max 100
+	write_reg(pdata, IMX636_RO_TIME_BASE_CTRL, 0x0000064B);
+	// Analog START
+	write_reg(pdata, 0x0010002C, 0x0022C724);
+	// Makes sure pixels are active
+	val = read_reg(pdata, IMX636_ROI_CTRL);
+	val |= 0x400;
+	write_reg(pdata, IMX636_ROI_CTRL, val);
+	// Enable and bypass event merge
+	write_reg(pdata, EVT_MERGE_CONTROL, 0x00000003);
+	// Enable time base generation
+	val = read_reg(pdata, TIME_BASE_CONTROL);
+	val |= 0x1;
+	write_reg(pdata, TIME_BASE_CONTROL, val);
 
 	if (ret) {
 		/*
@@ -656,13 +860,24 @@ static int start_streaming(struct vb2_queue *vq, unsigned int count)
 static void stop_streaming(struct vb2_queue *vq)
 {
 	struct psee_video *pdata = vb2_get_drv_priv(vq);
+	u32 val;
 
-	write_reg(pdata, 0x00200004, 0xF0005042);
-	write_reg(pdata, 0x0020002C, 0x0022C324);
-	write_reg(pdata, 0x0020C000, 0x00000002);
-	write_reg(pdata, 0x00209028, 0x00000002);
-	write_reg(pdata, 0x0020C000, 0x00000005);
-	write_reg(pdata, 0x00209008, 0x00000644);
+	write_reg(pdata, EVT_MERGE_CONTROL, 0x00000000);
+	write_reg(pdata, TIME_BASE_CONTROL, 0x0000004E);
+	val = read_reg(pdata, TIME_BASE_CONTROL);
+	val &= ~0x1;
+	write_reg(pdata, TIME_BASE_CONTROL, val);
+
+	// Analog STOP
+	val = read_reg(pdata, IMX636_ROI_CTRL);
+	val &= ~0x400;
+	write_reg(pdata, IMX636_ROI_CTRL, val);
+	write_reg(pdata, 0x0010002C, 0x0022C324);
+	// Digital STOP
+	write_reg(pdata, 0x00109028, 0x00000002);
+	write_reg(pdata, IMX636_RO_TIME_BASE_CTRL, 0x0000064A);
+	write_reg(pdata, IMX636_MIPI_CTRL, 0x00000158);
+
 	dmaengine_terminate_sync(pdata->chan[OUT]);
 
 	/* Release all active buffers */
@@ -709,8 +924,8 @@ static int psee_video_probe(struct platform_device *pdev)
 		return -ENXIO;
 	}
 
-	systemID = read_reg(pdata, 0x800);
-	if ((systemID != 0x2A) && (systemID != 0x2B)) {
+	systemID = read_reg(pdata, SYSTEM_ID);
+	if ((systemID != 0x32) && (systemID != 0x3A)) {
 		dev_err(dev, "FPGA reported unknown ID: 0x%x\n", systemID);
 		return -ENODEV;
 	}
@@ -778,7 +993,7 @@ static int psee_video_probe(struct platform_device *pdev)
 	pdata->vdev.device_caps = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_STREAMING | V4L2_CAP_READWRITE;
 	video_set_drvdata(&pdata->vdev, pdata);
 
-	rc = video_register_device(&pdata->vdev, VFL_TYPE_GRABBER, -1);
+	rc = video_register_device(&pdata->vdev, VFL_TYPE_VIDEO, -1);
 	if (rc) {
 		dev_err(dev, "Failed to register video device\n");
 		goto release_queue;
